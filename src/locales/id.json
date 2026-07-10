@@ -1,0 +1,56 @@
+{
+  "common": {
+    "title": "Portofolio Pribadi",
+    "themeToggle": "Ubah Tema",
+    "langToggle": "Ubah Bahasa",
+    "darkMode": "Mode Gelap",
+    "lightMode": "Mode Terang",
+    "readMore": "Baca Selengkapnya",
+    "featuredProjects": "Proyek Unggulan"
+  },
+  "navbar": {
+    "logo": "YOURNAME.DEV",
+    "about": "Tentang",
+    "projects": "Proyek",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "greeting": "Halo, Saya",
+    "description": "Seorang Full-Stack Web Developer yang berdedikasi membangun aplikasi web modern, berkinerja tinggi, dan bersih. Memadukan keahlian teknis backend yang kokoh dengan estetika visual Neobrutalism yang unik.",
+    "downloadResume": "Unduh CV",
+    "contactMe": "Hubungi Saya",
+    "avatarEmoji": "💻"
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "skills": "Keahlian Teknis",
+    "experience": "Lini Masa Karier"
+  },
+  "projects": {
+    "title": "Proyek Saya",
+    "viewCode": "Lihat Kode",
+    "liveDemo": "Demo Live",
+    "empty": "Tidak ada proyek yang ditemukan."
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "name": "Nama Lengkap",
+    "email": "Alamat Email",
+    "message": "Pesan Anda",
+    "placeholderName": "Masukkan nama lengkap Anda",
+    "placeholderEmail": "Masukkan alamat email Anda",
+    "placeholderMessage": "Tulis pesan Anda di sini...",
+    "submit": "Kirim Pesan",
+    "sending": "Mengirim...",
+    "success": "Pesan Anda telah berhasil dikirim! Terima kasih.",
+    "errorNameRequired": "Nama lengkap wajib diisi.",
+    "errorEmailRequired": "Alamat email wajib diisi.",
+    "errorEmailInvalid": "Format alamat email tidak valid.",
+    "errorMessageRequired": "Pesan wajib diisi."
+  },
+  "footer": {
+    "copyright": "© {year} YOURNAME.DEV. Hak Cipta Dilindungi Undang-Undang.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}

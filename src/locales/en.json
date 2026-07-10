@@ -1,0 +1,56 @@
+{
+  "common": {
+    "title": "Personal Portfolio",
+    "themeToggle": "Toggle Theme",
+    "langToggle": "Toggle Language",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "readMore": "Read More",
+    "featuredProjects": "Featured Projects"
+  },
+  "navbar": {
+    "logo": "YOURNAME.DEV",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I am",
+    "description": "A dedicated Full-Stack Web Developer building modern, high-performance, and clean web applications. Combining robust backend technical skills with a unique Neobrutalism visual aesthetic.",
+    "downloadResume": "Download CV",
+    "contactMe": "Contact Me",
+    "avatarEmoji": "💻"
+  },
+  "about": {
+    "title": "About Me",
+    "skills": "Technical Skills",
+    "experience": "Career Timeline"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
+    "empty": "No projects found."
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Full Name",
+    "email": "Email Address",
+    "message": "Your Message",
+    "placeholderName": "Enter your full name",
+    "placeholderEmail": "Enter your email address",
+    "placeholderMessage": "Write your message here...",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully! Thank you.",
+    "errorNameRequired": "Full name is required.",
+    "errorEmailRequired": "Email address is required.",
+    "errorEmailInvalid": "Invalid email address format.",
+    "errorMessageRequired": "Message is required."
+  },
+  "footer": {
+    "copyright": "© {year} YOURNAME.DEV. All Rights Reserved.",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  }
+}
