@@ -10,7 +10,7 @@ Your Name's personal developer portfolio, designed with a striking, minimal, and
 - **Komponen Atomik DRY:** Menggunakan komponen kustom reusable (`NeoCard`, `NeoButton`, `NeoBadge`) untuk mempertahankan konsistensi visual di seluruh antarmuka.
 - **Multibahasa Penuh (i18n):** Mendukung Bahasa Indonesia (ID) dan English (EN) secara dinamis tanpa ada string teks mentah (*hardcoded text*) di dalam template kode.
 - **Dinamis & API-Ready:** Data profil, keahlian, riwayat karier (linimasa), dan galeri proyek diisolasi di dalam Pinia Store, sehingga siap diintegrasikan dengan backend API nyata kapan saja.
-- **Formulir Kontak Validatif:** Formulir kirim pesan dengan validasi reaktif sisi klien beserta penanganan pesan kesalahan multibahasa.
+- **Formulir Kontak & Keamanan Klien (Formspree):** Pengiriman pesan serverless menggunakan endpoint Formspree yang dilengkapi proteksi spam (*honeypot*), pembersihan skrip jahat (*Anti-XSS input sanitization*), serta pembatasan waktu kirim ulang lokal (*Local Rate Limiting* 60 detik).
 - **Dukungan Dark Mode:** Beralih tema gelap/terang secara reaktif yang terintegrasi dengan kelas Tailwind CSS dan `shadcn-vue`.
 
 ---
@@ -41,6 +41,21 @@ Your Name's personal developer portfolio, designed with a striking, minimal, and
 │   ├── main.ts                # Entrypoint aplikasi
 │   └── i18n.ts                # Konfigurasi defensif vue-i18n
 ```
+
+---
+
+## ⚙️ Konfigurasi Environment
+
+Aplikasi memerlukan variabel lingkungan untuk berinteraksi dengan API eksternal Formspree. Pastikan Anda mengonfigurasinya sebelum menjalankan server lokal atau melakukan build:
+
+1. Duplikat berkas template `.env.example` di root proyek menjadi berkas baru bernama `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Buka berkas `.env` tersebut dan masukkan URL endpoint Formspree Anda:
+   ```env
+   VITE_CONTACT_API_URL=https://formspree.io/f/your_formspree_id
+   ```
 
 ---
 
