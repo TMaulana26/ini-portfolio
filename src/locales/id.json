@@ -43,6 +43,8 @@
     "submit": "Kirim Pesan",
     "sending": "Mengirim...",
     "success": "Pesan Anda telah berhasil dikirim! Terima kasih.",
+    "cooldown": "Tunggu {seconds} detik",
+    "faxNumber": "Nomor Faks (Jangan diisi jika Anda manusia)",
     "errorNameRequired": "Nama lengkap wajib diisi.",
     "errorEmailRequired": "Alamat email wajib diisi.",
     "errorEmailInvalid": "Format alamat email tidak valid.",

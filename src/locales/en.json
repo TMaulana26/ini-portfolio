@@ -43,6 +43,8 @@
     "submit": "Send Message",
     "sending": "Sending...",
     "success": "Your message has been sent successfully! Thank you.",
+    "cooldown": "Wait {seconds}s",
+    "faxNumber": "Fax Number (Do not fill if you are human)",
     "errorNameRequired": "Full name is required.",
     "errorEmailRequired": "Email address is required.",
     "errorEmailInvalid": "Invalid email address format.",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import NeoCard from '@/components/ui/NeoCard.vue'
 import NeoButton from '@/components/ui/NeoButton.vue'
 import { Send, CheckCircle2 } from 'lucide-vue-next'
@@ -8,6 +8,7 @@ const form = reactive({
   name: '',
   email: '',
   message: '',
+  fax_number: '', // Honeypot field
 })
 
 const errors = reactive({
@@ -18,6 +19,57 @@ const errors = reactive({
 
 const isSubmitting = ref(false)
 const isSuccess = ref(false)
+const cooldownSeconds = ref(0)
+let cooldownInterval: ReturnType<typeof setInterval> | null = null
+
+// Load API URL from Vite environment variables
+const apiUrl = (import.meta.env.VITE_CONTACT_API_URL || '') as string
+
+const sanitizeInput = (text: string): string => {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;')
+}
+
+const startCooldownTimer = (seconds: number) => {
+  cooldownSeconds.value = seconds
+  if (cooldownInterval) clearInterval(cooldownInterval)
+  cooldownInterval = setInterval(() => {
+    if (cooldownSeconds.value > 1) {
+      cooldownSeconds.value -= 1
+    } else {
+      cooldownSeconds.value = 0
+      if (cooldownInterval) {
+        clearInterval(cooldownInterval)
+        cooldownInterval = null
+      }
+    }
+  }, 1000)
+}
+
+const checkCooldown = () => {
+  if (typeof localStorage === 'undefined' || !localStorage.getItem) return
+  const lastSubmit = localStorage.getItem('portfolio_contact_last_submit')
+  if (lastSubmit) {
+    const elapsed = Date.now() - parseInt(lastSubmit, 10)
+    const remaining = Math.ceil((60000 - elapsed) / 1000)
+    if (remaining > 0 && remaining <= 60) {
+      startCooldownTimer(remaining)
+    }
+  }
+}
+
+onMounted(() => {
+  checkCooldown()
+})
+
+onUnmounted(() => {
+  if (cooldownInterval) clearInterval(cooldownInterval)
+})
 
 const validateForm = (): boolean => {
   let isValid = true
@@ -52,26 +104,69 @@ const validateForm = (): boolean => {
   return isValid
 }
 
-const handleSubmit = () => {
+const handleSubmit = async () => {
   if (!validateForm()) return
+  if (cooldownSeconds.value > 0) return
 
-  isSubmitting.value = true
-  
-  // Simulate API post
-  setTimeout(() => {
-    isSubmitting.value = false
+  // Honeypot check: if filled, simulate success silently to mislead bots
+  if (form.fax_number) {
     isSuccess.value = true
-    
-    // Clear form
     form.name = ''
     form.email = ''
     form.message = ''
-    
-    // Reset success message after 5 seconds
+    form.fax_number = ''
     setTimeout(() => {
       isSuccess.value = false
     }, 5000)
-  }, 1500)
+    return
+  }
+
+  // Sanitize script inputs
+  form.name = sanitizeInput(form.name)
+  form.email = sanitizeInput(form.email)
+  form.message = sanitizeInput(form.message)
+
+  isSubmitting.value = true
+
+  const payload = {
+    name: form.name,
+    email: form.email,
+    message: form.message,
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+
+    if (response.ok) {
+      isSuccess.value = true
+      
+      // Store submit timestamp for local rate limiting
+      if (typeof localStorage !== 'undefined' && localStorage.setItem) {
+        localStorage.setItem('portfolio_contact_last_submit', Date.now().toString())
+      }
+      startCooldownTimer(60)
+
+      // Clear Form fields
+      form.name = ''
+      form.email = ''
+      form.message = ''
+
+      setTimeout(() => {
+        isSuccess.value = false
+      }, 5000)
+    }
+  } catch (error) {
+    console.error('Failed to submit form:', error)
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
@@ -101,6 +196,7 @@ const handleSubmit = () => {
             id="name"
             v-model="form.name"
             type="text"
+            name="name"
             :placeholder="$t('contact.placeholderName')"
             class="border-2 border-black dark:border-white rounded-none p-3 font-bold bg-white text-black dark:bg-zinc-800 dark:text-zinc-100 outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-neo-hover dark:focus:shadow-neo-dark-hover transition-all"
             :class="{ 'border-neoPink dark:border-neoPink': errors.name }"
@@ -119,6 +215,7 @@ const handleSubmit = () => {
             id="email"
             v-model="form.email"
             type="text"
+            name="email"
             :placeholder="$t('contact.placeholderEmail')"
             class="border-2 border-black dark:border-white rounded-none p-3 font-bold bg-white text-black dark:bg-zinc-800 dark:text-zinc-100 outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-neo-hover dark:focus:shadow-neo-dark-hover transition-all"
             :class="{ 'border-neoPink dark:border-neoPink': errors.email }"
@@ -136,6 +233,7 @@ const handleSubmit = () => {
           <textarea
             id="message"
             v-model="form.message"
+            name="message"
             rows="5"
             :placeholder="$t('contact.placeholderMessage')"
             class="border-2 border-black dark:border-white rounded-none p-3 font-bold bg-white text-black dark:bg-zinc-800 dark:text-zinc-100 outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-neo-hover dark:focus:shadow-neo-dark-hover transition-all resize-none"
@@ -146,16 +244,34 @@ const handleSubmit = () => {
           </p>
         </div>
 
+        <!-- Honeypot Field (visually hidden) -->
+        <div class="hidden" aria-hidden="true">
+          <label for="fax_number">{{ $t('contact.faxNumber') }}</label>
+          <input
+            id="fax_number"
+            v-model="form.fax_number"
+            type="text"
+            name="fax_number"
+            tabindex="-1"
+            autocomplete="off"
+          />
+        </div>
+
         <!-- Submit Button -->
         <div class="pt-2">
           <NeoButton
             type="submit"
             variant="yellow"
-            :disabled="isSubmitting"
+            :disabled="isSubmitting || cooldownSeconds > 0"
             class="w-full gap-2 py-3"
           >
             <Send class="w-4 h-4" />
-            {{ isSubmitting ? $t('contact.sending') : $t('contact.submit') }}
+            <span v-if="cooldownSeconds > 0">
+              {{ $t('contact.cooldown', { seconds: cooldownSeconds }) }}
+            </span>
+            <span v-else>
+              {{ isSubmitting ? $t('contact.sending') : $t('contact.submit') }}
+            </span>
           </NeoButton>
         </div>
       </form>
