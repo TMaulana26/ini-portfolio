@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mtim.my.id/sitemap.xml

@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import App from '../App.vue'
 import i18n from '../i18n'
 import { createPinia, setActivePinia } from 'pinia'
+import { createHead } from '@unhead/vue/client'
 
 describe('App', () => {
   beforeEach(() => {
@@ -10,9 +11,10 @@ describe('App', () => {
   })
 
   it('mounts and renders properly with i18n and pinia', () => {
+    const head = createHead()
     const wrapper = mount(App, {
       global: {
-        plugins: [i18n]
+        plugins: [i18n, head]
       }
     })
     expect(wrapper.text()).toContain('MTIM')

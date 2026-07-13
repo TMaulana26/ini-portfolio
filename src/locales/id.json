@@ -57,5 +57,9 @@
     "copyright": "© {year} MTIM. Hak Cipta Dilindungi Undang-Undang.",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "seo": {
+    "title": "Taufik Maulana - Pengembang Web Full-Stack",
+    "description": "Portofolio profesional Taufik Maulana, seorang Web Developer dan Full-Stack Developer berpengalaman dalam membangun arsitektur backend Laravel, API SAP, dan frontend Vue/React."
   }
 }
