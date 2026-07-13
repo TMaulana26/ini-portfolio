@@ -16,10 +16,10 @@ describe('TimelineSection.vue', () => {
       }
     })
     
-    expect(wrapper.text()).toContain('Tentang Saya')
-    expect(wrapper.text()).toContain('Keahlian Teknis')
+    expect(wrapper.text().toLowerCase()).toContain('tentang saya')
+    expect(wrapper.text().toLowerCase()).toContain('keahlian teknis')
     expect(wrapper.text()).toContain('Vue.js')
-    expect(wrapper.text()).toContain('TypeScript')
+    expect(wrapper.text()).toContain('PHP')
   })
 
   it('renders career experience items in chronological order', () => {
@@ -29,12 +29,12 @@ describe('TimelineSection.vue', () => {
       }
     })
     
-    expect(wrapper.text()).toContain('Junior Web Developer')
-    expect(wrapper.text()).toContain('Teknologi Jaya')
-    expect(wrapper.text()).toContain('Agustus 2024 - Januari 2025')
-    
-    expect(wrapper.text()).toContain('Fullstack Web Developer')
-    expect(wrapper.text()).toContain('Karya Kreatif Mandiri')
+    expect(wrapper.text()).toContain('Pengembang Web (Pengembang Front-End & Back-End)')
+    expect(wrapper.text()).toContain('PT FAN Integrasi Teknologi')
     expect(wrapper.text()).toContain('Februari 2025 - Sekarang')
+    
+    expect(wrapper.text()).toContain('Pengembang Full-Stack PHP')
+    expect(wrapper.text()).toContain('PT Lumos Inisiatif Indonesia')
+    expect(wrapper.text()).toContain('Oktober 2024 - Januari 2025')
   })
 })

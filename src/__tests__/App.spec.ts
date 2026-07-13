@@ -15,7 +15,7 @@ describe('App', () => {
         plugins: [i18n]
       }
     })
-    expect(wrapper.text()).toContain('YOURNAME.DEV')
-    expect(wrapper.text()).toContain('Your Name')
+    expect(wrapper.text()).toContain('MTIM')
+    expect(wrapper.text()).toContain('Taufik Maulana')
   })
 })

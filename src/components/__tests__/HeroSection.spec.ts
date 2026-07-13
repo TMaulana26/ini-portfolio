@@ -16,8 +16,8 @@ describe('HeroSection.vue', () => {
       }
     })
     
-    expect(wrapper.text()).toContain('Halo, Saya Your Name')
-    expect(wrapper.text()).toContain('Pengembang Web Fullstack & Desainer UI/UX')
+    expect(wrapper.text().toLowerCase()).toContain('halo, saya taufik maulana')
+    expect(wrapper.text()).toContain('Pengembang Web | Pengembang Full-Stack')
   })
 
   it('renders CV download button and contact button correctly', () => {
@@ -29,7 +29,7 @@ describe('HeroSection.vue', () => {
     
     const downloadLink = wrapper.find('a[download]')
     expect(downloadLink.exists()).toBe(true)
-    expect(downloadLink.attributes('href')).toBe('/dummy-resume.pdf')
+    expect(downloadLink.attributes('href')).toBe('/resume/CV_Taufik_Maulana_ATS_Friendly.pdf')
 
     const contactLink = wrapper.find('a[href="#contact"]')
     expect(contactLink.exists()).toBe(true)
