@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watchEffect, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useHead } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import { useDark } from '@vueuse/core'
 import BackgroundEffect from '@/components/ui/BackgroundEffect.vue'
 import AppNavbar from '@/components/AppNavbar.vue'
@@ -25,52 +25,21 @@ const title = computed(() => t('seo.title'))
 const description = computed(() => t('seo.description'))
 const canonicalUrl = 'https://mtim.my.id'
 
-useHead({
+useSeoMeta({
   title,
-  meta: [
-    {
-      name: 'description',
-      content: description,
-    },
-    // Open Graph
-    {
-      property: 'og:title',
-      content: title,
-    },
-    {
-      property: 'og:description',
-      content: description,
-    },
-    {
-      property: 'og:image',
-      content: 'https://mtim.my.id/images/hero.jpg',
-    },
-    {
-      property: 'og:url',
-      content: canonicalUrl,
-    },
-    {
-      property: 'og:type',
-      content: 'website',
-    },
-    // Twitter Card
-    {
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    },
-    {
-      name: 'twitter:title',
-      content: title,
-    },
-    {
-      name: 'twitter:description',
-      content: description,
-    },
-    {
-      name: 'twitter:image',
-      content: 'https://mtim.my.id/images/hero.jpg',
-    },
-  ],
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogImage: 'https://mtim.my.id/images/hero.jpg',
+  ogUrl: canonicalUrl,
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: title,
+  twitterDescription: description,
+  twitterImage: 'https://mtim.my.id/images/hero.jpg',
+})
+
+useHead({
   link: [
     {
       rel: 'canonical',

@@ -110,19 +110,16 @@ const initStarryNight = () => {
 watch(
   () => props.isDarkMode,
   (newValue) => {
+    if (typeof window === 'undefined') return;
     if (newValue) {
       // Small timeout to allow canvas element to render in DOM under v-if
       setTimeout(() => {
         initStarryNight();
-        if (typeof window !== "undefined") {
-          window.addEventListener("resize", handleResize);
-        }
+        window.addEventListener("resize", handleResize);
       }, 50);
     } else {
       stopStarryNight();
-      if (typeof window !== "undefined") {
-        window.removeEventListener("resize", handleResize);
-      }
+      window.removeEventListener("resize", handleResize);
     }
   },
   { immediate: true },
