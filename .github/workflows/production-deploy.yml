@@ -35,7 +35,7 @@ jobs:
           VITE_CONTACT_API_URL: ${{ secrets.VITE_CONTACT_API_URL }}
         run: npm run build
 
-      # Ganti bagian ini agar deploy ke Cloudflare Workers/Pages statis
+      # Deploy ke Cloudflare Workers/Pages statis
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
