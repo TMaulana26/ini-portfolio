@@ -9,22 +9,25 @@
     "featuredProjects": "Featured Projects"
   },
   "navbar": {
-    "logo": "YOURNAME.DEV",
+    "logo": "MTIM",
     "about": "About",
     "projects": "Projects",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi, I am",
-    "description": "A dedicated Full-Stack Web Developer building modern, high-performance, and clean web applications. Combining robust backend technical skills with a unique Neobrutalism visual aesthetic.",
-    "downloadResume": "Download CV",
-    "contactMe": "Contact Me",
-    "avatarEmoji": "💻"
+    "greeting": "HELLO, I AM",
+    "name": "TAUFIK MAULANA, S.Kom.",
+    "title": "Full-Stack Web Developer",
+    "description": "A results-driven Web Developer and Full-Stack Developer with comprehensive experience in designing, developing, and deploying robust enterprise-scale web applications. Highly proficient in building heavy backend architecture using Laravel, integrating enterprise SAP APIs, and modernizing frontends using Vue.js, React.js, and Tailwind CSS.",
+    "avatarEmoji": "👨‍💻",
+    "cta_download": "Download CV",
+    "cta_contact": "Contact Me"
   },
   "about": {
-    "title": "About Me",
-    "skills": "Technical Skills",
-    "experience": "Career Timeline"
+    "title": "ABOUT ME",
+    "bio": "I am a professional web developer with a demonstrated track record of delivering high-stakes core systems for national transportation infrastructure under strict deployment timelines. Possessing strong technical problem-solving capabilities and a collaborative mindset tailored for high-pressure, agile team environments.",
+    "skills_title": "TECHNICAL SKILLS",
+    "experience": "Work Experience"
   },
   "projects": {
     "title": "My Projects",
@@ -51,8 +54,12 @@
     "errorMessageRequired": "Message is required."
   },
   "footer": {
-    "copyright": "© {year} YOURNAME.DEV. All Rights Reserved.",
+    "copyright": "© {year} MTIM. All Rights Reserved.",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "seo": {
+    "title": "Taufik Maulana - Full-Stack Web Developer",
+    "description": "Professional portfolio of Taufik Maulana, an experienced Web Developer and Full-Stack Developer proficient in Laravel backend architecture, SAP API integration, and Vue/React frontend."
   }
 }

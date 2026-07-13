@@ -9,9 +9,9 @@ describe('Portfolio Store', () => {
 
   it('initializes with profile data', () => {
     const store = usePortfolioStore()
-    expect(store.profile.name).toBe('Your Name')
+    expect(store.profile.name).toBe('Taufik Maulana')
     expect(store.profile.skills).toContain('Vue.js')
-    expect(store.profile.email).toBe('yourname@example.com')
+    expect(store.profile.email).toBe('tm052602@gmail.com')
   })
 
   it('initializes with projects data', () => {
@@ -19,7 +19,7 @@ describe('Portfolio Store', () => {
     expect(store.projects.length).toBeGreaterThan(0)
     const firstProject = store.projects[0]
     expect(firstProject).toBeDefined()
-    expect(firstProject?.title.en).toBe('Retro E-Commerce Platform')
-    expect(firstProject?.techStack).toContain('Vue.js')
+    expect(firstProject?.title.en).toBe('Lumoshive Academy Landing Page')
+    expect(firstProject?.techStack).toContain('HTML5')
   })
 })

@@ -9,22 +9,25 @@
     "featuredProjects": "Proyek Unggulan"
   },
   "navbar": {
-    "logo": "YOURNAME.DEV",
+    "logo": "MTIM",
     "about": "Tentang",
     "projects": "Proyek",
     "contact": "Kontak"
   },
   "hero": {
-    "greeting": "Halo, Saya",
-    "description": "Seorang Full-Stack Web Developer yang berdedikasi membangun aplikasi web modern, berkinerja tinggi, dan bersih. Memadukan keahlian teknis backend yang kokoh dengan estetika visual Neobrutalism yang unik.",
-    "downloadResume": "Unduh CV",
-    "contactMe": "Hubungi Saya",
-    "avatarEmoji": "💻"
+    "greeting": "HALO, SAYA",
+    "name": "TAUFIK MAULANA, S.Kom.",
+    "title": "Pengembang Web Full-Stack",
+    "description": "Seorang Web Developer dan Full-Stack Developer berpengalaman dalam merancang, membangun, dan menyebarkan aplikasi web skala perusahaan yang kokoh. Mahir dalam arsitektur backend berat menggunakan Laravel, integrasi API enterprise SAP, serta modernisasi frontend menggunakan Vue.js, React.js, dan Tailwind CSS.",
+    "avatarEmoji": "👨‍💻",
+    "cta_download": "Unduh CV",
+    "cta_contact": "Hubungi Saya"
   },
   "about": {
-    "title": "Tentang Saya",
-    "skills": "Keahlian Teknis",
-    "experience": "Lini Masa Karier"
+    "title": "TENTANG SAYA",
+    "bio": "Saya adalah seorang pengembang web profesional berorientasi pada hasil dengan rekam jejak terbukti dalam menghadirkan sistem inti berskala tinggi untuk infrastruktur transportasi nasional di bawah lini masa peluncuran yang ketat. Memiliki kemampuan pemecahan masalah teknis yang kuat serta pola pikir kolaboratif yang disesuaikan untuk lingkungan tim agile bertekanan tinggi.",
+    "skills_title": "KEAHLIAN TEKNIS",
+    "experience": "Riwayat Pengalaman"
   },
   "projects": {
     "title": "Proyek Saya",
@@ -51,8 +54,12 @@
     "errorMessageRequired": "Pesan wajib diisi."
   },
   "footer": {
-    "copyright": "© {year} YOURNAME.DEV. Hak Cipta Dilindungi Undang-Undang.",
+    "copyright": "© {year} MTIM. Hak Cipta Dilindungi Undang-Undang.",
     "github": "GitHub",
     "linkedin": "LinkedIn"
+  },
+  "seo": {
+    "title": "Taufik Maulana - Pengembang Web Full-Stack",
+    "description": "Portofolio profesional Taufik Maulana, seorang Web Developer dan Full-Stack Developer berpengalaman dalam membangun arsitektur backend Laravel, API SAP, dan frontend Vue/React."
   }
 }

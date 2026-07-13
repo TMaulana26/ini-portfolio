@@ -34,18 +34,50 @@ const headerBgClass = computed(() => {
       return 'bg-neoGreen text-black'
   }
 })
+
+// Map the project category to a Neobrutalist NeoBadge variant
+const categoryBadgeVariant = computed(() => {
+  switch (props.project.category) {
+    case 'Fullstack':
+      return 'pink'
+    case 'Frontend':
+      return 'cyan'
+    case 'Backend':
+      return 'yellow'
+    default:
+      return 'green'
+  }
+})
 </script>
 
 <template>
   <NeoCard variant="white" class="flex flex-col h-full overflow-hidden !p-0">
-    <!-- Card Cover/Mockup Pattern -->
+    <!-- Card Cover/Screenshot or Mockup Pattern -->
     <div 
-      class="h-44 border-b-2 border-black dark:border-white flex items-center justify-center relative overflow-hidden select-none"
-      :class="headerBgClass"
+      class="h-48 border-b-2 border-black dark:border-white relative overflow-hidden select-none"
     >
-      <span class="text-4xl font-black uppercase tracking-widest italic select-none">
-        {{ project.category }}
-      </span>
+      <img
+        v-if="project.image"
+        :src="project.image"
+        :alt="localizedTitle"
+        class="w-full h-full object-cover object-center"
+      />
+      <div 
+        v-else
+        class="w-full h-full flex items-center justify-center"
+        :class="headerBgClass"
+      >
+        <span class="text-4xl font-black uppercase tracking-widest italic select-none">
+          {{ project.category }}
+        </span>
+      </div>
+      <!-- Floating Category Badge Overlay -->
+      <NeoBadge 
+        :variant="categoryBadgeVariant" 
+        class="absolute top-3 right-3 shadow-neo border-2 border-black dark:border-white"
+      >
+        {{ project.category.toUpperCase() }}
+      </NeoBadge>
     </div>
 
     <!-- Card Content -->
@@ -72,9 +104,12 @@ const headerBgClass = computed(() => {
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex items-center gap-3 pt-6 border-t-2 border-black dark:border-white/20 mt-6">
+      <div 
+        v-if="project.accessMode !== 'internal'"
+        class="flex items-center gap-3 pt-6 border-t-2 border-black dark:border-white/20 mt-6"
+      >
         <a 
-          v-if="project.githubUrl" 
+          v-if="project.githubUrl && (project.accessMode === 'standard' || project.accessMode === 'coming_soon')" 
           :href="project.githubUrl" 
           target="_blank" 
           rel="noopener noreferrer"
@@ -87,7 +122,7 @@ const headerBgClass = computed(() => {
         </a>
         
         <a 
-          v-if="project.demoUrl" 
+          v-if="project.demoUrl && project.accessMode === 'standard'" 
           :href="project.demoUrl" 
           target="_blank" 
           rel="noopener noreferrer"
