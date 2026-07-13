@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { usePortfolioStore } from "@/stores/portfolio";
 import { useI18n } from "vue-i18n";
+import { useDark } from "@vueuse/core";
 import NeoCard from "@/components/ui/NeoCard.vue";
 import NeoBadge from "@/components/ui/NeoBadge.vue";
 
 const store = usePortfolioStore();
 const { locale } = useI18n();
+const isDark = useDark();
 </script>
 
 <template>
@@ -16,20 +18,22 @@ const { locale } = useI18n();
         <h2 class="text-3xl font-black uppercase border-b-4 border-black dark:border-white pb-2">
           {{ $t("about.title") }}
         </h2>
-        <p class="text-base text-zinc-700 dark:text-zinc-300 font-semibold leading-relaxed">
-          {{ locale === "id" ? store.profile.bio.id : store.profile.bio.en }}
-        </p>
+        <NeoCard :variant="isDark ? 'transparent' : 'white'">
+          <p class="text-base text-zinc-700 dark:text-zinc-300 font-semibold leading-relaxed">
+            {{ locale === "id" ? store.profile.bio.id : store.profile.bio.en }}
+          </p>
+        </NeoCard>
 
-        <div class="space-y-3">
-          <h3 class="text-lg font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            {{ $t("about.skills_title") }}
-          </h3>
+        <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
+          {{ $t("about.skills_title") }}
+        </h2>
+        <NeoCard :variant="isDark ? 'transparent' : 'white'">
           <div class="flex flex-wrap gap-2">
             <NeoBadge v-for="skill in store.profile.skills" :key="skill" variant="cyan">
               {{ skill }}
             </NeoBadge>
           </div>
-        </div>
+        </NeoCard>
       </div>
 
       <!-- Career Timeline Area (2/3 width on wide screens) -->

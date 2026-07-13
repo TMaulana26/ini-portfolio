@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 interface Props {
-  variant?: 'white' | 'yellow' | 'cyan' | 'pink' | 'green' | 'orange' | 'dark'
+  variant?: 'white' | 'yellow' | 'cyan' | 'pink' | 'green' | 'orange' | 'dark' | 'transparent'
   clickable?: boolean
 }
 
@@ -27,6 +27,8 @@ const variantClasses = computed(() => {
       return 'bg-neoOrange text-white dark:bg-orange-800 dark:text-white'
     case 'dark':
       return 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-black'
+    case 'transparent':
+      return 'bg-transparent text-black dark:text-zinc-100'
     default:
       return 'bg-white text-black dark:bg-zinc-900 dark:text-zinc-100'
   }
