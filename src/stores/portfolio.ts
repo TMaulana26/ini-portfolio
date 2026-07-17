@@ -273,6 +273,35 @@ export const usePortfolioStore = defineStore("portfolio", () => {
       image: "/images/headless-cms.png",
       accessMode: "coming_soon",
     },
+    {
+      id: "9",
+      title: {
+        id: "100 Kanji Quiz",
+        en: "100 Kanji Quiz",
+      },
+      description: {
+        id: "Web app kuis interaktif berbasis WordPress untuk melatih ingatan 100 Kanji paling sering digunakan.",
+        en: "An interactive WordPress-powered web quiz application designed to master the top 100 most frequent Kanji characters.",
+      },
+      longDescription: {
+        id: "Aplikasi kuis responsif layar penuh yang memanfaatkan WordPress sebagai backend CMS untuk mengelola data karakter Jepang secara dinamis. Menggunakan arsitektur pemisahan fungsional, di mana data CPT dan ACF diekspos melalui jembatan PHP khusus langsung ke aplikasi frontend JavaScript yang menangani logika state kuis, algoritma pengacakan pilihan jawaban salah secara real-time, serta sistem pelacakan skor performa pengguna.",
+        en: "An immersive, full-screen quiz web application leveraging WordPress as a backend headless CMS to dynamically manage Japanese character datasets. Built using a decoupling architecture, custom PHP scripts bridge Custom Post Types (CPT) and Advanced Custom Fields (ACF) directly into a vanilla JavaScript frontend layout engine that manages quiz state tracking, real-time random distractor choice generation, and user accuracy evaluation scores.",
+      },
+      techStack: [
+        "WordPress CMS",
+        "PHP",
+        "Vanilla JavaScript",
+        "CSS3",
+        "Advanced Custom Fields (ACF)",
+        "Custom Post Types",
+      ],
+      category: "Frontend",
+      demoUrl: "https://100kanjiquiz.ifree.page/wp/",
+      githubUrl: "https://github.com/TMaulana26/100-kanji-quiz-wp-asset",
+      featured: true,
+      image: "/images/wp-100-kanji-quiz.png",
+      accessMode: "standard",
+    },
   ]);
 
   const timeline = ref<TimelineItem[]>([
