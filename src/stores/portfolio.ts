@@ -245,11 +245,11 @@ export const usePortfolioStore = defineStore("portfolio", () => {
       },
       techStack: ["Vue.js", "Tailwind CSS", "shadcn-vue", "TypeScript"],
       category: "Frontend",
-      demoUrl: "https://tm-kana.my.id",
+      demoUrl: "https://tm-kana.mtim.my.id/",
       githubUrl: "https://github.com/TMaulana26/tm-kana",
       featured: false,
       image: "/images/tm-kana.png",
-      accessMode: "coming_soon",
+      accessMode: "standard",
     },
     {
       id: "8",
