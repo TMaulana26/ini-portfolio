@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "vite --port=5180",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
+    "preview": "npm run build && wrangler dev",
     "test": "vitest run",
     "test:unit": "vitest",
     "build-only": "vite-ssg build",
     "type-check": "vue-tsc --build",
     "lint": "run-s \"lint:*\"",
     "lint:oxlint": "oxlint . --fix",
-    "lint:eslint": "eslint . --fix --cache"
+    "lint:eslint": "eslint . --fix --cache",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@lucide/vue": "^1.24.0",
@@ -33,6 +34,7 @@
     "vue-router": "^5.1.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.45.1",
     "@intlify/eslint-plugin-vue-i18n": "^4.5.1",
     "@tsconfig/node24": "^24.0.4",
     "@types/jsdom": "^28.0.3",
@@ -58,7 +60,8 @@
     "vite-ssg": "^28.3.0",
     "vitest": "^4.1.9",
     "vue-eslint-parser": "^10.4.1",
-    "vue-tsc": "^3.3.5"
+    "vue-tsc": "^3.3.5",
+    "wrangler": "^4.112.0"
   },
   "engines": {
     "node": "^22.18.0 || >=24.12.0"
